@@ -1,0 +1,28 @@
+{
+  "name": "DigitalYearbook",
+  "version": "1.0.0",
+  "description": "A Digital Year Book website for Yabatech Computer Science Department Set 19/20",
+  "main": "dist/index.html",
+  "scripts": {
+    "start": "parcel src/index.html --open",
+    "clean": "rm -rf dist/*",
+    "build:parcel": "parcel build src/index.html --no-content-hash --no-source-maps --public-url ./",
+    "build": "npm run clean && npm run build:parcel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Horpey/Digital-Yearbook.git"
+  },
+  "keywords": [],
+  "author": "Horpey",
+  "homepage": "https://tympanus.net/codrops",
+  "bugs": {
+    "url": "https://github.com/Horpey/Digital-Yearbook/issues"
+  },
+  "devDependencies": {
+    "parcel": "latest"
+  },
+  "dependencies": {
+    "gsap": "^3.6.1"
+  }
+}
