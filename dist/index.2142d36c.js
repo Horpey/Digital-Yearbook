@@ -442,19 +442,38 @@ id) /*: string*/
 }
 
 },{}],"3L8AI":[function(require,module,exports) {
-var _cursor = require('./cursor');
-var _item = require('./item');
-// initialize custom cursor
-const cursor = new _cursor.Cursor(document.querySelector('.cursor'));
-// items/images elems
-[...document.querySelectorAll('.item')].forEach(item => new _item.Item(item));
-// mouse effects on all links
-[...document.querySelectorAll('a, .distort__img')].forEach(link => {
-  link.addEventListener('mouseenter', () => cursor.enter());
-  link.addEventListener('mouseleave', () => cursor.leave());
+var _cursor = require("./cursor");
+var _item = require("./item");
+var _dataJson = require("./data.json");
+var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
+var _dataJsonDefault = _parcelHelpers.interopDefault(_dataJson);
+// vue instance
+var app = new Vue({
+  el: "#app",
+  data: {
+    data: _dataJsonDefault.default
+  },
+  mounted() {
+    // initialize custom cursor
+    const cursor = new _cursor.Cursor(document.querySelector(".cursor"));
+    // items/images elems
+    [...document.querySelectorAll(".item")].forEach(item => new _item.Item(item));
+    // mouse effects on all links
+    [...document.querySelectorAll("a, .distort__img")].forEach(link => {
+      link.addEventListener("mouseenter", () => cursor.enter());
+      link.addEventListener("mouseleave", () => cursor.leave());
+    });
+  },
+  methods: {
+    reformLink(url) {
+      url ? url = new URL(url) : "";
+      const imageId = new URLSearchParams(url.search).get("id");
+      return `https://drive.google.com/uc?export=view&id=${imageId}`;
+    }
+  }
 });
 
-},{"./cursor":"6m6MU","./item":"2s5BT"}],"6m6MU":[function(require,module,exports) {
+},{"./cursor":"6m6MU","./item":"2s5BT","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y","./data.json":"53c5a"}],"6m6MU":[function(require,module,exports) {
 var _parcelHelpers = require("@parcel/transformer-js/lib/esmodule-helpers.js");
 _parcelHelpers.defineInteropFlag(exports);
 _parcelHelpers.export(exports, "Cursor", function () {
@@ -4159,6 +4178,8 @@ class Item {
   }
 }
 
-},{"gsap":"1iecp","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}]},["21c8X","3L8AI"], "3L8AI", "parcelRequire7566")
+},{"gsap":"1iecp","@parcel/transformer-js/lib/esmodule-helpers.js":"5gA8y"}],"53c5a":[function(require,module,exports) {
+module.exports = JSON.parse("[{\"Timestamp\":\"17/07/2021 23:54:23\",\"Fullname\":\"Ayantokun Sodiq Adeyemi\",\"Nickname\":\"General Bugatti\",\"DisplayImage\":\"https://drive.google.com/open?id=1f0kVMhIrceo_JO6R5ejnqlloRLTKXbQd\",\"FavouriteQuote\":\"It can only get better\",\"InstagramUsername\":\"General_buga101\",\"TwitterUsername\":\"\"},{\"Timestamp\":\"17/07/2021 23:56:09\",\"Fullname\":\"Afolabi Abimbola Abigeal\",\"Nickname\":\"Beamthy\",\"DisplayImage\":\"https://drive.google.com/open?id=19UlbyoSo4ePNpW_YUOUCtv1kZgTJsQ_l\",\"FavouriteQuote\":\"There's love in sharing buh there's peace in having your own✌️\",\"InstagramUsername\":\"\",\"TwitterUsername\":\"@abigealafolabi\"},{\"Timestamp\":\"17/07/2021 23:56:13\",\"Fullname\":\"Fayomade Oluwaseyi\",\"Nickname\":\"Willie\",\"DisplayImage\":\"https://drive.google.com/open?id=1cEG5x8VX91j_EOeSYUEp7P2Mt9xNMc0e\",\"FavouriteQuote\":\"Do good, Success awaits you.\",\"InstagramUsername\":\"Willie_technology_solutions\",\"TwitterUsername\":\"@EngSeyifunmi\"},{\"Timestamp\":\"17/07/2021 23:57:26\",\"Fullname\":\"Akinwunmi Bukola\",\"Nickname\":\"Bukky\",\"DisplayImage\":\"\",\"FavouriteQuote\":\"\",\"InstagramUsername\":\"@b_glamsignatures\",\"TwitterUsername\":\"Bukolamayos\"},{\"Timestamp\":\"17/07/2021 23:59:33\",\"Fullname\":\"Adeniran Opeyemi\",\"Nickname\":\"Horpey\",\"DisplayImage\":\"https://drive.google.com/open?id=1dF_DgrdJMy_1wm-qPRo8bIoqfJdf2z7z\",\"FavouriteQuote\":\"Sometimes the place you are used to is not the place you belong\",\"InstagramUsername\":\"tha_ui_guy\",\"TwitterUsername\":\"thauiguy\"},{\"Timestamp\":\"17/07/2021 23:59:36\",\"Fullname\":\"Ajisebutu David\",\"Nickname\":\"Davidjay\",\"DisplayImage\":\"https://drive.google.com/open?id=1Tm5PswuoxLe4nK44z9Ka6lTyeBVl5veH\",\"FavouriteQuote\":\"What people don't know they can't ruin\",\"InstagramUsername\":\"Mrindeed\",\"TwitterUsername\":\"\"},{\"Timestamp\":\"18/07/2021 00:02:23\",\"Fullname\":\"Akindele Adebari Uthman\",\"Nickname\":\"Dele\",\"DisplayImage\":\"https://drive.google.com/open?id=10x_wFjb5exFJdc7arVMFFdptj7xpvgui\",\"FavouriteQuote\":\"Mio ya ju sin yio\",\"InstagramUsername\":\"valiant_des\",\"TwitterUsername\":\"\"},{\"Timestamp\":\"18/07/2021 00:02:49\",\"Fullname\":\"Balogun Hammed\",\"Nickname\":\"Bhallo\",\"DisplayImage\":\"https://drive.google.com/open?id=19VpBRpAQaV_I-QbGVvTniawGrn52k3Cb\",\"FavouriteQuote\":\"My heart is that ease knowing what is meant for me will never misses me and that what misses me wasn't meant for me\",\"InstagramUsername\":\"Oriyomi360\",\"TwitterUsername\":\"Blackdude360\"},{\"Timestamp\":\"18/07/2021 00:07:02\",\"Fullname\":\"Ebenezer Arobadi\",\"Nickname\":\"Eben\",\"DisplayImage\":\"https://drive.google.com/open?id=13s_HobJosWfCHFJOiov5hkc1d4mJIzed\",\"FavouriteQuote\":\"\",\"InstagramUsername\":\"@ebene_arobz\",\"TwitterUsername\":\"@ebene_arobs\"},{\"Timestamp\":\"18/07/2021 00:09:20\",\"Fullname\":\"Abdulraheem Ibrahim akorede\",\"Nickname\":\"Rico Sahin\",\"DisplayImage\":\"https://drive.google.com/open?id=1WFfp7LH4MYe547wA-Xmrsfh1wSkz1aUo\",\"FavouriteQuote\":\"In Allah I believe \\nMuslim is my religion \\nProphet Muhammad is messenger of Allah \\nQuran is the book sent from Allah \\nThere is No God except Allah\\nI was born as a Muslim \\nI will die as a Muslim\",\"InstagramUsername\":\"Rico eleniyan\",\"TwitterUsername\":\"\"},{\"Timestamp\":\"18/07/2021 00:10:01\",\"Fullname\":\"Bashorun sulaimon\",\"Nickname\":\"BASH khalifa\",\"DisplayImage\":\"https://drive.google.com/open?id=1Wx734vePEsD92u-YyDbDgpdomb7qe9J0\",\"FavouriteQuote\":\"“The computer was born to solve problems that did not exist before.”\\n“Computer Science is no more about computers than astronomy is about telescopes.” ...\",\"InstagramUsername\":\"Bash_khalifa\",\"TwitterUsername\":\"\"},{\"Timestamp\":\"18/07/2021 00:11:58\",\"Fullname\":\"Christian Justina U.\",\"Nickname\":\"KarMAriah\",\"DisplayImage\":\"https://drive.google.com/open?id=1DDTvTl1muMiOBPe8l78MpUAl7zVUdb9e\",\"FavouriteQuote\":\"Pray as you may, you can never outpray God's will.\",\"InstagramUsername\":\"KarMAriahVique\",\"TwitterUsername\":\"KarMAriah\"},{\"Timestamp\":\"18/07/2021 00:24:21\",\"Fullname\":\"Tajudeen Ambali\",\"Nickname\":\"El-nino\",\"DisplayImage\":\"https://drive.google.com/open?id=1AXd4K0MVIjXoQaMxWqC2ra8O3egmptrE\",\"FavouriteQuote\":\"Best before doesn't mean worst after.\",\"InstagramUsername\":\"Nay!\",\"TwitterUsername\":\"Nay!\"},{\"Timestamp\":\"18/07/2021 00:54:56\",\"Fullname\":\"Okorie Cornelius Nkem\",\"Nickname\":\"Cornexx\",\"DisplayImage\":\"https://drive.google.com/open?id=1m-AuMafzbNnrsKUF6Bx8Y7_Pd338X2j6\",\"FavouriteQuote\":\"It is what it is\",\"InstagramUsername\":\"\",\"TwitterUsername\":\"\"}]");
+},{}]},["21c8X","3L8AI"], "3L8AI", "parcelRequire7566")
 
 //# sourceMappingURL=index.2142d36c.js.map

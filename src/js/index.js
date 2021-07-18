@@ -1,14 +1,31 @@
-import { Cursor } from './cursor';
-import { Item } from './item';
+import { Cursor } from "./cursor";
+import { Item } from "./item";
+import data from "./data.json";
 
-// initialize custom cursor
-const cursor = new Cursor(document.querySelector('.cursor'));
+// vue instance
+var app = new Vue({
+  el: "#app",
+  data: {
+    data,
+  },
+  mounted() {
+    // initialize custom cursor
+    const cursor = new Cursor(document.querySelector(".cursor"));
 
-// items/images elems
-[...document.querySelectorAll('.item')].forEach(item => new Item(item));
+    // items/images elems
+    [...document.querySelectorAll(".item")].forEach((item) => new Item(item));
 
-// mouse effects on all links
-[...document.querySelectorAll('a, .distort__img')].forEach(link => {
-    link.addEventListener('mouseenter', () => cursor.enter());
-    link.addEventListener('mouseleave', () => cursor.leave());
+    // mouse effects on all links
+    [...document.querySelectorAll("a, .distort__img")].forEach((link) => {
+      link.addEventListener("mouseenter", () => cursor.enter());
+      link.addEventListener("mouseleave", () => cursor.leave());
+    });
+  },
+  methods: {
+    reformLink(url) {
+      url ? (url = new URL(url)) : "";
+      const imageId = new URLSearchParams(url.search).get("id");
+      return `https://drive.google.com/uc?export=view&id=${imageId}`;
+    },
+  },
 });
