@@ -8,6 +8,11 @@ var app = new Vue({
   data: {
     data,
   },
+  computed: {
+    sortArray() {
+      return this.data.sort((a, b) => a.Fullname.localeCompare(b.Fullname))
+    },
+  },
   mounted() {
     // initialize custom cursor
     const cursor = new Cursor(document.querySelector(".cursor"));

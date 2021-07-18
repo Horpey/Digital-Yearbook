@@ -86,24 +86,61 @@
         </nav>
       </div>
       <div id="app" class="content">
-        <div class="item" v-for="(user,index) in data" :key="index">
+        <div class="item" v-for="(user,index) in sortArray" :key="index">
           <figure class="thumb">
-						<svg class="distort" width="350" height="450" viewBox="0 0 350 450" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-							<filter :id="`distortionFilter${index}`" data-type="displacementMap">
-								<feTurbulence type="turbulence" baseFrequency="0.1" numOctaves="5" seed="2" result="noise"/>
-								<feDisplacementMap in="SourceGraphic" in2="noise" scale="0" xChannelSelector="R" yChannelSelector="B" filterUnits="userSpaceOnUse"/>
-							</filter>
-							<image :filter="`url(#distortionFilter${index})`" class="distort__img" x="50" y="50" :href="reformLink(user.DisplayImage)" height="350" width="250"/>
-						</svg>
-						<figcaption class="thumb__caption">
-							<p class="thumb__caption-title">{{user.FavouriteQuote}}</p>
-						</figcaption>
-					</figure>
+            <svg
+              class="distort"
+              width="350"
+              height="450"
+              viewBox="0 0 350 450"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+            >
+              <filter
+                :id="`distortionFilter${index}`"
+                data-type="displacementMap"
+              >
+                <feTurbulence
+                  type="turbulence"
+                  baseFrequency="0.1"
+                  numOctaves="5"
+                  seed="2"
+                  result="noise"
+                />
+                <feDisplacementMap
+                  in="SourceGraphic"
+                  in2="noise"
+                  scale="0"
+                  xChannelSelector="R"
+                  yChannelSelector="B"
+                  filterUnits="userSpaceOnUse"
+                />
+              </filter>
+              <image
+                :filter="`url(#distortionFilter${index})`"
+                class="distort__img"
+                x="50"
+                y="50"
+                :href="reformLink(user.DisplayImage)"
+                height="350"
+                width="250"
+              />
+            </svg>
+            <figcaption class="thumb__caption">
+              <p class="thumb__caption-title">{{user.FavouriteQuote}}</p>
+            </figcaption>
+          </figure>
           <div class="item__meta">
             <p class="item__meta-counter"></p>
             <h3 class="item__meta-title">{{user.Fullname}}</h3>
             <p class="item__meta-detail">{{user.Nickname}}</p>
             <p class="item__meta-detail">
+              <a
+                v-if="user.LinkedInURL"
+                :href="`https://instagram.com/${user.LinkedInURL}`"
+                target="_blank"
+                >IN</a
+              ><span v-if="user.TwitterUsername"> • </span>
               <a
                 v-if="user.InstagramUsername"
                 :href="`https://instagram.com/${user.InstagramUsername}`"
