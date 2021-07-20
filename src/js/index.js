@@ -7,10 +7,17 @@ var app = new Vue({
   el: "#app",
   data: {
     data,
+    search: "",
+    length: 5
   },
   computed: {
     sortArray() {
-      return this.data.sort((a, b) => a.Fullname.localeCompare(b.Fullname))
+      return this.data.sort((a, b) => a.Fullname.localeCompare(b.Fullname));
+    },
+    filteredList() {
+      return this.sortArray.filter((post) => {
+        return post.Fullname.toLowerCase().includes(this.search.toLowerCase());
+      });
     },
   },
   mounted() {
@@ -25,8 +32,30 @@ var app = new Vue({
       link.addEventListener("mouseenter", () => cursor.enter());
       link.addEventListener("mouseleave", () => cursor.leave());
     });
+    // Scroll Event
+    this.$nextTick(function () {
+      window.addEventListener("scroll", this.onScroll);
+      this.onScroll(); // needed for initial loading on page
+    });
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.onScroll);
   },
   methods: {
+    onScroll() {
+      var itemList = this.$refs["itemList"];
+      if (itemList) {
+        var marginTopUsers = itemList.getBoundingClientRect().top;
+        var innerHeight = window.innerHeight;
+
+        if (marginTopUsers - innerHeight < -50) {
+          this.getItemList();
+        }
+      }
+    },
+    getItemList(){
+      // console.log('Hello')
+    },
     reformLink(url) {
       url ? (url = new URL(url)) : "";
       const imageId = new URLSearchParams(url.search).get("id");

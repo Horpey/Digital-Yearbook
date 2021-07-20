@@ -75,8 +75,11 @@
     </script>
   </head>
   <body>
-    <main>
-      <div class="frame">
+    <main id="app" >
+      <div>
+        <input v-model="search" class="forminput" type="text" placeholder="Search">
+      </div>
+      <div class="frame framesm">
         <h1 class="frame__pagetitle">HND 2 Computer Science Set 19/20</h1>
         <h2 class="frame__title">Digital Yearbook</h2>
         <nav class="frame__links">
@@ -85,8 +88,11 @@
           >
         </nav>
       </div>
-      <div id="app" class="content">
-        <div class="item" v-for="(user,index) in sortArray" :key="index">
+      <div style="text-align: center;" v-if="filteredList.length == 0">
+        <p>No Result found 🤭</p>
+      </div>
+      <div class="content" ref="itemList">
+        <div class="item" v-for="(user,index) in filteredList" :key="index">
           <figure class="thumb">
             <svg
               class="distort"
@@ -137,10 +143,10 @@
             <p class="item__meta-detail">
               <a
                 v-if="user.LinkedInURL"
-                :href="`https://instagram.com/${user.LinkedInURL}`"
+                :href="`${user.LinkedInURL}`"
                 target="_blank"
-                >IN</a
-              ><span v-if="user.TwitterUsername"> • </span>
+                >LN</a
+              ><span v-if="user.TwitterUsername && user.LinkedInURL"> • </span>
               <a
                 v-if="user.InstagramUsername"
                 :href="`https://instagram.com/${user.InstagramUsername}`"
