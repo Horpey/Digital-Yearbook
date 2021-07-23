@@ -95,6 +95,7 @@
         <div class="item" v-for="(user,index) in filteredList" :key="index">
           <figure class="thumb">
             <svg
+              v-if="user.DisplayImage"
               class="distort"
               width="350"
               height="450"
