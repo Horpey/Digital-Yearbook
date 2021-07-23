@@ -75,9 +75,14 @@
     </script>
   </head>
   <body>
-    <main id="app" >
+    <main id="app">
       <div>
-        <input v-model="search" class="forminput" type="text" placeholder="Search">
+        <input
+          v-model="search"
+          class="forminput"
+          type="text"
+          placeholder="Search"
+        />
       </div>
       <div class="frame framesm">
         <h1 class="frame__pagetitle">HND 2 Computer Science Set 19/20</h1>
@@ -88,7 +93,7 @@
           >
         </nav>
       </div>
-      <div style="text-align: center;" v-if="filteredList.length == 0">
+      <div style="text-align: center" v-if="filteredList.length == 0">
         <p>No Result found 🤭</p>
       </div>
       <div class="content" ref="itemList">
@@ -170,6 +175,20 @@
     <svg class="cursor" width="40" height="40" viewBox="0 0 40 40">
       <circle class="cursor__inner" cx="20" cy="20" r="10" />
     </svg>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-J93P2575Y2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-J93P2575Y2");
+    </script>
     <script src="js/index.js"></script>
     <script></script>
   </body>
